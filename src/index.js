@@ -23,17 +23,17 @@ app.post('/validarcodigo', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error en el servidor', error: error.message })
 
     }
-});
+})
 
 app.get('/modelomonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Modelo FROM Montacargas');
-      res.json(rows);
+      const [rows] = await pool.query('SELECT Id, Modelo FROM Montacargas')
+      res.json(rows)
     } catch (error) {
-      console.error('Error al consultar la base de datos:', error);
-      res.status(500).json({ message: 'Error en el servidor' });
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
     }
-  });
+  })
 
 app.listen(3000)
 console.log('server')
