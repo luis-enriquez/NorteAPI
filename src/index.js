@@ -27,7 +27,7 @@ app.post('/validarcodigo', async (req, res) => {
 
 app.get('/modelomonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Modelo FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Montacargas')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -37,7 +37,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/ubicacionmonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Ubicacion FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Ubicacion) FROM Montacargas')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -47,7 +47,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/statusmonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Estatus FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Estatus) FROM Montacargas')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -57,7 +57,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/liquidadomonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Liquidado FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Liquidado) FROM Montacargas')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -68,7 +68,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/clientemonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Modelo FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Montacargas')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -78,7 +78,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/modelotractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Modelo FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Tractores')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -88,7 +88,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/ubicaciontractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Ubicacion FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Ubicacion) FROM Tractores')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -98,7 +98,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/statustractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Estatus FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Estatus) FROM Tractores')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -108,7 +108,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/clientetractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Cliente FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Cliente) FROM Tractores')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -118,7 +118,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/liquidadotractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT Id, Liquidado FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Liquidado) FROM Tractores')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
