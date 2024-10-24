@@ -35,5 +35,96 @@ app.get('/modelomonta', async (req, res) => {
     }
   })
 
+  app.get('/ubicacionmonta', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Ubicacion FROM Montacargas')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+  app.get('/statusmonta', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Estatus FROM Montacargas')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+  app.get('/liquidadomonta', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Liquidado FROM Montacargas')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+
+  app.get('/clientemonta', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Modelo FROM Montacargas')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+  app.get('/modelotractor', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Modelo FROM Tractores')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+  app.get('/ubicaciontractor', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Ubicacion FROM Tractores')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+  app.get('/statustractor', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Estatus FROM Tractores')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+  app.get('/clientetractor', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Cliente FROM Tractores')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
+  app.get('/liquidadotractor', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT Id, Liquidado FROM Tractores')
+      res.json(rows)
+    } catch (error) {
+      console.error('Error al consultar la base de datos:', error)
+      res.status(500).json({ message: 'Error en el servidor' })
+    }
+  })
+
 app.listen(3000)
 console.log('server')
