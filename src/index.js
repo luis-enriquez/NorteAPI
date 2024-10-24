@@ -68,7 +68,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/clientemonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Cliente) FROM Montacargas')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
