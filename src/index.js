@@ -126,5 +126,20 @@ app.get('/modelomonta', async (req, res) => {
     }
   })
 
+  app.post('/ejecutarmonta', async(req, res) =>
+  {
+    const { query } = req.body
+    try
+    {
+        const [resultados] = await pool.query(query)
+        res.json(resultados)
+    }
+    catch (error)
+    {
+        console.error('Error al ejecutar query', error)
+        res.status(500).json({ error: 'Error al ejecutar la consulta' });
+    }
+  })
+
 app.listen(3000)
 console.log('server')
