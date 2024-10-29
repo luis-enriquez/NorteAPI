@@ -8,9 +8,9 @@ app.use(bodyParser.json())
 
 
 
-app.post('/validarcodigo', async (req, res) => {
+app.get('/validarcodigo/:codigo', async (req, res) => {
     try {
-        const { codigo } = req.body
+        const { codigo } = req.params
         const [result] = await pool.query('SELECT * FROM CodigoRegistro WHERE Codigo = ?', [codigo])
 
         if (result.length > 0) {
@@ -23,6 +23,47 @@ app.post('/validarcodigo', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error en el servidor', error: error.message })
 
     }
+})
+
+app.post('/crearusuario', async(req, res) => {
+  try
+  {
+      const { usuario, contraseña, nombre, email, rol } = req.body
+      const [result] = await pool.query('INSERT INTO Usuarios (Nombre, Usuario, Email, Contraseña, Rol) VALUES (?,?,?,?,?)', [nombre, usuario, email, contraseña, rol])
+      res.json({ success: true, message: 'Usuario creado exitosamente', id: result.insertId})
+  }
+  catch (error)
+  {
+      console.error('Error:', error);  // Log de errores para más detalles
+      res.status(500).json({ success: false, message: 'Error en el servidor', error: error.message });
+  }
+})
+
+app.put('/usarcodigo/:codigo', async(req, res) => {
+  try
+  {
+      const { codigo } = req.params
+      const estatus = "Ok"
+      const [result] = await pool.query('UPDATE CodigoRegistro SET StatusCodigo = ? WHERE Codigo = ?',[estatus, codigo])
+      res.json({success: true, message: "Codigo usado"})
+  } catch(error)
+  {
+    console.error('Error:', error);  // Log de errores para más detalles
+    res.status(500).json({ success: false, message: 'Error en el servidor', error: error.message });
+  }
+})
+
+app.post('/usarcodigo', async (req, res) => {
+  try
+  {
+      const {codigo, estatus } = req.body
+      const [result] = await pool.query('INSERT INTO CodigoRegistro (Codigo, StatusCodigo) VALU]ES (?,?)', [codigo, estatus])
+  }
+  catch (error)
+  {
+    console.error('Error:', error);  // Log de errores para más detalles
+    res.status(500).json({ success: false, message: 'Error en el servidor', error: error.message });
+  }
 })
 
 app.get('/modelomonta', async (req, res) => {
