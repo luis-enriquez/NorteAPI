@@ -31,7 +31,7 @@ app.post('/crearusuario', async(req, res) => {
   try
   {
       const { usuario, contraseña, nombre, email, rol } = req.body
-      const hash= bcrypt.hash(contraseña,10)
+      const hash= await bcrypt.hash(contraseña,10)
       const [result] = await pool.query('INSERT INTO Usuarios (Nombre, Usuario, Email, Contraseña, Rol) VALUES (?,?,?,?,?)', [nombre, usuario, email, hash, rol])
       res.json({ success: true, message: 'Usuario creado exitosamente', id: result.insertId})
   }
