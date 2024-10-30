@@ -2,7 +2,7 @@ import expres from 'express'
 import {pool} from './db.js'
 import {} from './config.js'
 import bodyParser from 'body-parser'
-import bcrypt from 'bcryptjs'
+
 
 const app = expres()
 app.use(bodyParser.json())
