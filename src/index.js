@@ -56,6 +56,25 @@ app.put('/usarcodigo/:codigo', async(req, res) => {
   }
 })
 
+app.post('/iniciarsesion', async (req, res) => {
+  try {
+    const { usuario, contraseña } = req.body;
+    const [rows] = await pool.query('SELECT * FROM Usuarios WHERE Usuario = ?', [usuario]);
+    if (rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Usuario no encontrado' });
+    }
+    const user = rows[0];
+    const isMatch = await bcrypt.compare(contraseña, user.Contraseña);
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+    }
+    res.json({ success: true, message: 'Inicio de sesión exitoso', userId: user.id });
+  } catch (error) {
+    console.error('Error en el servidor:', error);
+    res.status(500).json({ success: false, message: 'Error en el servidor', error: error.message });
+  }
+})
+
 app.post('/usarcodigo', async (req, res) => {
   try
   {
