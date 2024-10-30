@@ -2,7 +2,7 @@ import expres from 'express'
 import {pool} from './db.js'
 import {} from './config.js'
 import bodyParser from 'body-parser'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 const app = expres()
 app.use(bodyParser.json())
@@ -30,9 +30,7 @@ app.post('/crearusuario', async(req, res) => {
   try
   {
       const { usuario, contraseña, nombre, email, rol } = req.body
-      const saltos = 10
-      const hash = await bcrypt.hash(contraseña,saltos)
-      const [result] = await pool.query('INSERT INTO Usuarios (Nombre, Usuario, Email, Contraseña, Rol) VALUES (?,?,?,?,?)', [nombre, usuario, email, hash, rol])
+      const [result] = await pool.query('INSERT INTO Usuarios (Nombre, Usuario, Email, Contraseña, Rol) VALUES (?,?,?,?,?)', [nombre, usuario, email, contraseña, rol])
       res.json({ success: true, message: 'Usuario creado exitosamente', id: result.insertId})
   }
   catch (error)
