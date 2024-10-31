@@ -110,7 +110,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/statusmonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Estatus) FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Estado) FROM Montacargas')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -161,7 +161,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/statustractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Estatus) FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Estado) FROM Tractores')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
