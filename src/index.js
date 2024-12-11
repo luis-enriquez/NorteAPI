@@ -90,7 +90,7 @@ app.post('/usarcodigo', async (req, res) => {
 
 app.get('/modelomonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Montacargas ORDER BY Modelo')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -100,7 +100,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/ubicacionmonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Ubicacion) FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Ubicacion) FROM Montacargas ORDER BY Ubicacion')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -110,7 +110,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/statusmonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Estado) FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Estado) FROM Montacargas ORDER BY Estado')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -120,7 +120,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/liquidadomonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Liquidado) FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Liquidado) FROM Montacargas ORDER BY Liquidado')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -131,7 +131,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/clientemonta', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Cliente) FROM Montacargas')
+      const [rows] = await pool.query('SELECT DISTINCT(Cliente) FROM Montacargas ORDER BY Cliente')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -141,7 +141,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/modelotractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Modelo) FROM Tractores ORDER BY Modelo')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -151,7 +151,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/ubicaciontractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Ubicacion) FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Ubicacion) FROM Tractores ORDER BY Ubicacion')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -161,7 +161,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/statustractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Estado) FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Estado) FROM Tractores ORDER BY Estado')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -171,7 +171,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/clientetractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Cliente) FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Cliente) FROM Tractores ORDER BY Cliente')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
@@ -181,7 +181,7 @@ app.get('/modelomonta', async (req, res) => {
 
   app.get('/liquidadotractor', async (req, res) => {
     try {
-      const [rows] = await pool.query('SELECT DISTINCT(Liquidado) FROM Tractores')
+      const [rows] = await pool.query('SELECT DISTINCT(Liquidado) FROM Tractores ORDER BY Liquidado')
       res.json(rows)
     } catch (error) {
       console.error('Error al consultar la base de datos:', error)
