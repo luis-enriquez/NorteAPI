@@ -79,7 +79,7 @@ app.post('/usarcodigo', async (req, res) => {
   try
   {
       const {codigo, estatus } = req.body
-      const [result] = await pool.query('INSERT INTO CodigoRegistro (Codigo, StatusCodigo) VALU]ES (?,?)', [codigo, estatus])
+      const [result] = await pool.query('INSERT INTO CodigoRegistro (Codigo, StatusCodigo) VALUES (?,?)', [codigo, estatus])
   }
   catch (error)
   {
